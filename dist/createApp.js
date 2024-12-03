@@ -91,6 +91,9 @@ function createApp() {
         app.use("/api/v1/auth", rateLimiter_1.authLimiter);
     }
     app.use("/api/v1", v1_1.default);
+    app.get("/", (req, res) => {
+        res.send("Welcome to the server!");
+    });
     // send back a 404 error for any unknown api request
     app.use((req, res, next) => {
         const errorMessage = `Not found: ${req.originalUrl}`;

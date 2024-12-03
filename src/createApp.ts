@@ -26,7 +26,6 @@ export function createApp() {
     allowedHeaders: "Content-Type, Authorization",
   };
 
-
   app.use(cors(corsOptions));
 
   if (config.env !== NodeEnv.Local) {
@@ -60,7 +59,7 @@ export function createApp() {
         pool: getPool(),
         tableName: "user_session",
       }),
-    }),
+    })
   );
 
   // sanitize request data
@@ -76,6 +75,10 @@ export function createApp() {
   }
   app.use("/api/v1", v1Routes);
 
+  app.get("/", (req, res) => {
+    res.send("Welcome to the server!");
+  });
+
   // send back a 404 error for any unknown api request
   app.use((req, res, next) => {
     const errorMessage = `Not found: ${req.originalUrl}`;
@@ -87,6 +90,8 @@ export function createApp() {
 
   // handle error
   app.use(errorHandler);
+
+
 
   return app;
 }
