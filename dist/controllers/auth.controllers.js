@@ -164,7 +164,7 @@ class AuthController {
                     yield repositoryUserPermissionTokenRepo.delete(repositoryUserPermissionToken.token);
                 }
             }
-            const redirectUrl = `${process.env.FRONT_END_URL}/`; // TODO: IMPORTANT
+            const redirectUrl = `http://localhost:3000/`; // TODO: IMPORTANT
             res.redirect(redirectUrl);
         });
     }
