@@ -248,7 +248,7 @@ export class AuthController {
         );
       }
     }
-    const redirectUrl = `http://localhost:3000/`; // TODO: IMPORTANT
+    const redirectUrl = `${process.env.FRONT_END_URL}/`; // TODO: IMPORTANT
     res.redirect(redirectUrl);
   }
 
