@@ -34,7 +34,19 @@ export function createApp() {
   }
 
   // set security HTTP headers
-  app.use(helmet());
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          "default-src": ["'self'"],
+          "script-src": ["'self'", "'unsafe-inline'"],
+          "style-src": ["'self'", "'unsafe-inline'"],
+          "img-src": ["'self'", "data:", "https:"],
+        },
+      },
+    })
+  );
 
   app.use(express.json());
   // Use JSON parser for all non-webhook routes.
@@ -90,8 +102,6 @@ export function createApp() {
 
   // handle error
   app.use(errorHandler);
-
-
 
   return app;
 }

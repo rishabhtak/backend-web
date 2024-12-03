@@ -57,7 +57,17 @@ function createApp() {
         app.use(morgan.errorHandler);
     }
     // set security HTTP headers
-    app.use((0, helmet_1.default)());
+    app.use((0, helmet_1.default)({
+        contentSecurityPolicy: {
+            useDefaults: true,
+            directives: {
+                "default-src": ["'self'"],
+                "script-src": ["'self'", "'unsafe-inline'"],
+                "style-src": ["'self'", "'unsafe-inline'"],
+                "img-src": ["'self'", "data:", "https:"],
+            },
+        },
+    }));
     app.use(express_1.default.json());
     // Use JSON parser for all non-webhook routes.
     app.use((req, res, next) => {
