@@ -50,7 +50,8 @@ export function createApp() {
       },
     })
   );
-  
+
+  app.use(helmet.hsts({ maxAge: 31536000 })); // 1 year
 
   app.use(express.json());
   // Use JSON parser for all non-webhook routes.
@@ -80,7 +81,6 @@ export function createApp() {
       }),
     })
   );
-  
 
   // sanitize request data
   // TODO: lolo
