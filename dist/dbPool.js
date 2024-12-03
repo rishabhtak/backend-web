@@ -31,6 +31,8 @@ dotenv.config();
 function getPool() {
     return new pg_1.Pool({
         connectionString: config_1.config.postgres.connectionString,
-        ssl: false,
+        ssl: {
+            rejectUnauthorized: false,
+        },
     });
 }

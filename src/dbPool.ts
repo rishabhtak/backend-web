@@ -7,6 +7,8 @@ dotenv.config();
 export function getPool(): Pool {
   return new Pool({
     connectionString: config.postgres.connectionString,
-    ssl: false,
+    ssl: {
+      rejectUnauthorized: false,
+    },
   });
 }
