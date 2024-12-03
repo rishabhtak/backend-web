@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const admin_controllers_1 = require("../../controllers/admin.controllers");
+const isWebsiteAdmin_1 = require("../../middlewares/isWebsiteAdmin");
+const router = (0, express_1.Router)();
+router.post("/address", isWebsiteAdmin_1.isWebsiteAdmin, admin_controllers_1.AdminController.createAddress);
+router.post("/company", isWebsiteAdmin_1.isWebsiteAdmin, admin_controllers_1.AdminController.createCompany);
+router.post("/company/admin-invite", isWebsiteAdmin_1.isWebsiteAdmin, admin_controllers_1.AdminController.sendCompanyAdminInvite);
+router.post("/company/create-manual-invoice", isWebsiteAdmin_1.isWebsiteAdmin, admin_controllers_1.AdminController.createManualInvoice);
+router.post("/repository/admin-invite", isWebsiteAdmin_1.isWebsiteAdmin, admin_controllers_1.AdminController.sendRepositoryAdminInvite);
+exports.default = router;
