@@ -61,10 +61,13 @@ function createApp() {
         contentSecurityPolicy: {
             useDefaults: true,
             directives: {
-                "default-src": ["'self'"],
-                "script-src": ["'self'", "'unsafe-inline'"],
-                "style-src": ["'self'", "'unsafe-inline'"],
-                "img-src": ["'self'", "data:", "https:"],
+                "default-src": ["'self'"], // Restrict everything to the same origin by default
+                "script-src": ["'self'"], // Only allow scripts from the same origin
+                "style-src": ["'self'", "'strict-dynamic'"], // Avoid inline styles, or use strict-dynamic if needed
+                "img-src": ["'self'", "https:"], // Allow images from the same origin and HTTPS
+                "object-src": ["'none'"], // Disallow objects (Flash, etc.)
+                "connect-src": ["'self'"], // Restrict network connections
+                "font-src": ["'self'", "https:"], // Allow fonts from the same origin and HTTPS
             },
         },
     }));
