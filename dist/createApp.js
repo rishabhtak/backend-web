@@ -89,7 +89,7 @@ function createApp() {
         resave: false,
         cookie: {
             maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-            secure: config_1.config.env === config_1.NodeEnv.Production, // Use Secure only in production
+            secure: true,
             httpOnly: true, // Protect against XSS
             sameSite: "strict", // Mitigate CSRF
         },
