@@ -14,7 +14,6 @@
 		"lint:fix": "prettier */*.js \"*/**/*{.js,.ts,.tsx}\" -w",
 		"lint": "prettier */*.js \"*/**/*{.js,.ts,.tsx}\" --check",
 		"db-migrate": "ts-node -T scripts/migrate.ts",
-		"vercel-build": "ts-node -T scripts/migrate.ts && npm start",
 		"db-drop": "ts-node -T scripts/drop.ts"
 	},
 	"keywords": [],
