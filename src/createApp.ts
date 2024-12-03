@@ -65,11 +65,14 @@ export function createApp() {
 
   app.use(
     session({
-      secret: "anson the dev", // TODO: process.env.FOO_COOKIE_SECRET
+      secret: "your-secret-key",
       saveUninitialized: true,
       resave: false,
       cookie: {
         maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+        secure: config.env === NodeEnv.Production, // Use Secure only in production
+        httpOnly: true, // Protect against XSS
+        sameSite: "strict", // Mitigate CSRF
       },
       store: new pgSession({
         pool: getPool(),
@@ -77,6 +80,7 @@ export function createApp() {
       }),
     })
   );
+  
 
   // sanitize request data
   // TODO: lolo

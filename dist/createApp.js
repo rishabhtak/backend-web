@@ -83,11 +83,14 @@ function createApp() {
         }
     });
     app.use((0, express_session_1.default)({
-        secret: "anson the dev", // TODO: process.env.FOO_COOKIE_SECRET
+        secret: "your-secret-key",
         saveUninitialized: true,
         resave: false,
         cookie: {
             maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+            secure: config_1.config.env === config_1.NodeEnv.Production, // Use Secure only in production
+            httpOnly: true, // Protect against XSS
+            sameSite: "strict", // Mitigate CSRF
         },
         store: new pgSession({
             pool: (0, dbPool_1.getPool)(),
