@@ -87,6 +87,7 @@ function createApp() {
         secret: "your-secret-key",
         saveUninitialized: true,
         resave: false,
+        proxy: true,
         cookie: {
             maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
             secure: true,
