@@ -56,6 +56,7 @@ function createApp() {
         app.use(morgan.successHandler);
         app.use(morgan.errorHandler);
     }
+    //update
     // set security HTTP headers
     app.use((0, helmet_1.default)({
         contentSecurityPolicy: {
