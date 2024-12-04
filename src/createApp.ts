@@ -52,7 +52,7 @@ export function createApp() {
     })
   );
 
-  
+
   app.use(helmet.hsts({ maxAge: 31536000 })); // 1 year
 
   app.use(express.json());
@@ -75,7 +75,7 @@ export function createApp() {
         maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
         secure: true,
         httpOnly: true, // Protect against XSS
-        sameSite: "strict", // Mitigate CSRF
+        sameSite: "none",
       },
       store: new pgSession({
         pool: getPool(),
