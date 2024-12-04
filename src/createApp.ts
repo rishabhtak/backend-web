@@ -33,7 +33,7 @@ export function createApp() {
     app.use(morgan.errorHandler);
   }
 
-  
+
   // set security HTTP headers
   app.use(
     helmet({
@@ -52,6 +52,7 @@ export function createApp() {
     })
   );
 
+  
   app.use(helmet.hsts({ maxAge: 31536000 })); // 1 year
 
   app.use(express.json());
