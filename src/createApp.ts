@@ -82,6 +82,7 @@ export function createApp() {
     })
   );
 
+  
   // sanitize request data
   // TODO: lolo
   // app.use(xss());
