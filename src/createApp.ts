@@ -90,11 +90,14 @@ export function createApp() {
   // TODO: lolo
   // app.use(xss());
 
+  //update
+
   app.use(passport.initialize());
   app.use(passport.session());
 
   // limit repeated failed requests to auth endpoints
   if (config.env === NodeEnv.Production) {
+    console.log("Rate limiter enabled");
     app.use("/api/v1/auth", authLimiter);
   }
   app.use("/api/v1", v1Routes);

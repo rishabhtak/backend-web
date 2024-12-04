@@ -103,10 +103,12 @@ function createApp() {
     // sanitize request data
     // TODO: lolo
     // app.use(xss());
+    //update
     app.use(passport_1.default.initialize());
     app.use(passport_1.default.session());
     // limit repeated failed requests to auth endpoints
     if (config_1.config.env === config_1.NodeEnv.Production) {
+        console.log("Rate limiter enabled");
         app.use("/api/v1/auth", rateLimiter_1.authLimiter);
     }
     app.use("/api/v1", v1_1.default);
